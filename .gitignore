@@ -6,3 +6,12 @@ node_modules
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+# Bun
+bun.lock
+
+# VS Code
+.vscode/
+
+# Bin
+bin/
