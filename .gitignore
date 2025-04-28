@@ -15,3 +15,6 @@ bun.lock
 
 # Bin
 bin/
+
+# Environment variables
+.env
