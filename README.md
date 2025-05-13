@@ -7,15 +7,14 @@ Plannify es una aplicación diseñada para ayudar a estudiantes a organizar sus 
 ## 📁 Estructura del Proyecto
 
 ```bash
-src/
-├── controllers/
-│   ├── auth.controller.ts            # Maneja login y registro
-│   ├── user.controller.ts            # Perfil del usuario
-│   ├── schedule.controller.ts        # Horarios escaneados
-│   ├── task.controller.ts            # Gestión de tareas
-│   ├── subject.controller.ts         # Materias del usuario
-│   ├── notification.controller.ts    # Notificaciones automáticas
-│   └── progress.controller.ts        # Progreso por materia
+├── src/
+│   ├── auth.ts            # Maneja login y registro
+│   ├── user.ts            # Perfil del usuario
+│   ├── schedule.ts        # Horarios escaneados
+│   ├── task.ts            # Gestión de tareas
+│   ├── subject.ts        # Materias del usuario
+│   ├── notification.ts    # Notificaciones automáticas
+│   └── progress.ts        # Progreso por materia
 │
 ├── services/
 │   ├── auth.service.ts
