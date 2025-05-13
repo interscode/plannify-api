@@ -1,14 +1,36 @@
-# Welcome to your CDK TypeScript project
+# 📚 Plannify API
 
-This is a blank project for CDK development with TypeScript.
+Plannify es una aplicación diseñada para ayudar a estudiantes a organizar sus pendientes y mejorar su rendimiento académico. Esta API está estructurada siguiendo una arquitectura por capas: **Controladores**, **Servicios** y **Repositorios**.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+---
 
-## Useful commands
+## 📁 Estructura del Proyecto
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+```bash
+src/
+├── controllers/
+│   ├── auth.controller.ts            # Maneja login y registro
+│   ├── user.controller.ts            # Perfil del usuario
+│   ├── schedule.controller.ts        # Horarios escaneados
+│   ├── task.controller.ts            # Gestión de tareas
+│   ├── subject.controller.ts         # Materias del usuario
+│   ├── notification.controller.ts    # Notificaciones automáticas
+│   └── progress.controller.ts        # Progreso por materia
+│
+├── services/
+│   ├── auth.service.ts
+│   ├── user.service.ts
+│   ├── schedule.service.ts
+│   ├── task.service.ts
+│   ├── subject.service.ts
+│   ├── notification.service.ts
+│   └── progress.service.ts
+│
+├── repositories/
+│   ├── user.repository.ts
+│   ├── schedule.repository.ts
+│   ├── task.repository.ts
+│   ├── subject.repository.ts
+│   ├── notification.repository.ts
+│   └── progress.repository.ts
+
