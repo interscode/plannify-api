@@ -32,4 +32,14 @@ Plannify es una aplicación diseñada para ayudar a estudiantes a organizar sus 
 │   ├── subject.repository.ts
 │   ├── notification.repository.ts
 │   └── progress.repository.ts
+````
+## 📊 Esquemas de la base de datos
 
+### `schedule`
+```bash
+|------------------------------------------------------------------------|
+| Columna | Tipo      | Descripcion                                      |
+|---------|-----------|--------------------------------------------------|
+|   id    |ObjectId   | Identificador de la materia (Clave primaria)     |
+|---------|-----------|--------------------------------------------------| 
+ 
