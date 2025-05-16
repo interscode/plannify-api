@@ -35,6 +35,7 @@ Plannify es una aplicación diseñada para ayudar a estudiantes a organizar sus 
 ```
 ---
 ## 📊 Esquemas de la base de datos
+Para manejar la base de datos de plannify se usara MongoDB para una mejor organizacion gracias a su flexibilidad con estructuras dinámicas. 
 
 ### `schedule`
 ```bash
