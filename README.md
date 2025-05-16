@@ -89,6 +89,8 @@ Para manejar la base de datos de plannify se usara MongoDB para una mejor organi
 | dueDate     | Date      | Fecha de vencimiento de la tarea                 |
 |-------------|-----------|--------------------------------------------------|
 | description | String    | Descipción de la tarea a realizar                |
+|-------------|-----------|--------------------------------------------------|
+| subject_id  | ObjectId  | Identificador de la materia a la que se asocia   |
 |----------------------------------------------------------------------------|
 ```
  
