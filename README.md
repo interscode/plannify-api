@@ -84,13 +84,15 @@ Para manejar la base de datos de plannify se usara MongoDB para una mejor organi
 |-------------|-----------|--------------------------------------------------|
 | task_id     | ObjectId  | Identificador de la tarea                        |
 |-------------|-----------|--------------------------------------------------|
-| title       | String    | TItulo de la tarea                               |
+| name        | String    | TItulo de la tarea                               |
 |-------------|-----------|--------------------------------------------------|
 | dueDate     | Date      | Fecha de vencimiento de la tarea                 |
 |-------------|-----------|--------------------------------------------------|
 | description | String    | Descipción de la tarea a realizar                |
 |-------------|-----------|--------------------------------------------------|
 | subject_id  | ObjectId  | Identificador de la materia a la que se asocia   |
+|-------------|-----------|--------------------------------------------------|
+| status      | String    | Estatus tarea (entregada, en proceso, pendiente) |
 |----------------------------------------------------------------------------|
 ```
  
