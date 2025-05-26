@@ -4,7 +4,7 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as apigw from "aws-cdk-lib/aws-apigateway";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 
-export class MyAppStack extends cdk.Stack {
+export class PlannifyApiStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -12,6 +12,7 @@ export class MyAppStack extends cdk.Stack {
       entry: "lambda/index.ts",
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_20_X,
+      depsLockFilePath: "bun.lock",
     });
     fn.addFunctionUrl({
       authType: lambda.FunctionUrlAuthType.NONE,
