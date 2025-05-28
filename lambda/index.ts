@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { handle } from "hono/aws-lambda";
-import { shedule } from "@/src/shedule";
+import { shedule } from "@/src/schedule";
 import { subject } from "@/src/subject";
 import { task } from "@/src/task";
 

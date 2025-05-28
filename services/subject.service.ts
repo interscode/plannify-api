@@ -1,4 +1,4 @@
-import { Subject } from "@/lib/types";
+import { InputSubject, Subject } from "@/lib/types";
 import {
   subjectRepository,
   SubjectRepository,
@@ -29,6 +29,20 @@ export class SubjectService {
       return subject;
     } catch (error) {
       console.error("Error al obtener la materia:", error);
+      throw error;
+    }
+  }
+
+  public async addSubjectsToSchedule(
+    subjects: InputSubject[],
+    user_id: string,
+  ): Promise<Subject[] | undefined> {
+    try {
+      const subjectsCreated =
+        await this.subjectRepository.addSubjectsToSchedule(subjects, user_id);
+      return subjectsCreated;
+    } catch (error) {
+      console.error("Error al agregar materias al horario:", error);
       throw error;
     }
   }

@@ -33,3 +33,11 @@ export type Task = {
 export type TaskWithSubject = Task & {
   subject: Subject;
 };
+
+type Horario = { hora: string; aula: string | null };
+
+export type InputSubject = {
+  materia: string;
+  profesor: string;
+  horarios: Record<string, Horario>;
+};
