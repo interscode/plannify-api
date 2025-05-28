@@ -5,9 +5,10 @@ import {
   ScanCommand,
   UpdateCommand,
   DeleteCommand,
+  BatchWriteCommand,
 } from "@aws-sdk/lib-dynamodb";
 import { subjectSchema } from "@/lib/schemas";
-import { Subject } from "@/lib/types";
+import { Subject, InputSubject } from "@/lib/types";
 import {
   CreateTableCommand,
   DescribeTableCommand,
@@ -87,6 +88,37 @@ export class SubjectRepository {
     );
   }
 
+  private transformSubjects(
+    materias: InputSubject[],
+    userId: string,
+  ): Subject[] {
+    const colors = ["#F87171", "#60A5FA", "#34D399", "#FBBF24", "#A78BFA"]; // Colores de ejemplo
+    const emojis = ["📘", "📗", "📕", "📙", "📒", "📓"]; // Emojis de ejemplo
+
+    return materias.flatMap((materia, index) => {
+      const color = colors[index % colors.length];
+      const emoji = emojis[index % emojis.length];
+
+      return Object.entries(materia.horarios).map(([dia, info]) => {
+        const [startHour, endHour] = info.hora.split("-").map((h) => `${h}:00`);
+
+        return {
+          subject_id: crypto.randomUUID(),
+          name: materia.materia,
+          teacher: materia.profesor,
+          classroom: info.aula || "No encontrado",
+          color,
+          emoji,
+          day: dia,
+          start_time: startHour,
+          end_time: endHour,
+          tasks_ids: [],
+          user_id: userId,
+        };
+      });
+    });
+  }
+
   public async getSubjects(user_id: string): Promise<any[]> {
     const params = {
       TableName: subjectSchema.TableName,
@@ -122,6 +154,31 @@ export class SubjectRepository {
       console.error("Error al obtener el subject:", error);
       throw error;
     }
+  }
+
+  public async addSubjectsToSchedule(
+    subjects: InputSubject[],
+    user_id: string,
+  ): Promise<Subject[] | undefined> {
+    const createdSubjects: Subject[] = this.transformSubjects(
+      subjects,
+      user_id,
+    );
+
+    for (const subject of createdSubjects) {
+      const params = {
+        TableName: subjectSchema.TableName,
+        Item: subject,
+      };
+
+      try {
+        await this.ddb.send(new PutCommand(params));
+      } catch (error) {
+        console.error("Error al crear subject:", subject.name, error);
+      }
+    }
+
+    return createdSubjects;
   }
 
   public async createSubject(subject: Subject): Promise<Subject> {
